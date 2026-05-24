@@ -5,7 +5,7 @@ from autobilans.isolated_pipeline import learn_prefix_rules_from_history, run_is
 
 
 def test_learn_prefix_rules_from_nordoen_history_uses_only_company_history() -> None:
-    entries = build_dataset_index(Path(r"D:\autobilans"))
+    entries = build_dataset_index(Path(r"."))
 
     learned = learn_prefix_rules_from_history(
         entries=entries,
@@ -20,7 +20,7 @@ def test_learn_prefix_rules_from_nordoen_history_uses_only_company_history() -> 
 
 
 def test_run_isolated_company_pipeline_generates_nordoen_2026_outputs(tmp_path: Path) -> None:
-    entries = build_dataset_index(Path(r"D:\autobilans"))
+    entries = build_dataset_index(Path(r"."))
 
     summary_path = run_isolated_company_pipeline(
         entries=entries,

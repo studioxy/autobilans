@@ -7,10 +7,10 @@ from autobilans.validation.compare import compare_balance_to_xml, summarize_vali
 
 
 def test_compare_balance_to_xml_matches_known_positions_with_aliases() -> None:
-    rows = parse_zois(r"D:\autobilans\8spzoo\2025\zois2025.xlsx")
+    rows = parse_zois(r"8spzoo/2025/zois2025.xlsx")
     decisions = map_rows(rows, build_history_rules(rows))
     totals = calculate_balance(rows, decisions)
-    positions = parse_bilans_xml(r"D:\autobilans\8spzoo\2025\2026_01_24_SF_8_2025.xml")
+    positions = parse_bilans_xml(r"8spzoo/2025/2026_01_24_SF_8_2025.xml")
 
     results = compare_balance_to_xml(
         totals,
@@ -41,10 +41,10 @@ def test_compare_balance_to_xml_matches_known_positions_with_aliases() -> None:
 
 
 def test_summarize_validation_counts_matches_and_mismatches() -> None:
-    rows = parse_zois(r"D:\autobilans\8spzoo\2025\zois2025.xlsx")
+    rows = parse_zois(r"8spzoo/2025/zois2025.xlsx")
     decisions = map_rows(rows, build_history_rules(rows))
     totals = calculate_balance(rows, decisions)
-    positions = parse_bilans_xml(r"D:\autobilans\8spzoo\2025\2026_01_24_SF_8_2025.xml")
+    positions = parse_bilans_xml(r"8spzoo/2025/2026_01_24_SF_8_2025.xml")
 
     results = compare_balance_to_xml(
         totals,
@@ -59,7 +59,7 @@ def test_summarize_validation_counts_matches_and_mismatches() -> None:
 
 
 def test_compare_balance_to_xml_supports_composite_aliases() -> None:
-    positions = parse_bilans_xml(r"D:\autobilans\metro\2025\2026-01-30-SF-metro-2025 jw.xml")
+    positions = parse_bilans_xml(r"metro/2025/2026-01-30-SF-metro-2025 jw.xml")
     results = compare_balance_to_xml(
         {
             "BABIII1c1_SPKR__POS": 697396.78,

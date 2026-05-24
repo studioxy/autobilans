@@ -5,7 +5,7 @@ from autobilans.parsers.zois import parse_zois
 
 
 def test_calculate_balance_sums_direct_and_history_mappings() -> None:
-    rows = parse_zois(r"D:\autobilans\8spzoo\2025\zois2025.xlsx")
+    rows = parse_zois(r"8spzoo/2025/zois2025.xlsx")
     rules = build_history_rules(rows)
     decisions = map_rows(rows, rules)
 
@@ -19,7 +19,7 @@ def test_calculate_balance_sums_direct_and_history_mappings() -> None:
 
 
 def test_calculate_balance_includes_additional_balance_codes() -> None:
-    rows = parse_zois(r"D:\autobilans\metro\2025\zois2025.xlsx")
+    rows = parse_zois(r"metro/2025/zois2025.xlsx")
     rules = build_history_rules(rows)
     decisions = map_rows(rows, rules)
 
