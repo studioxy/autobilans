@@ -1,0 +1,21 @@
+manual_rules:
+  8spzoo:
+    all: {}
+  metro:
+    '2025':
+      201-2-1-8510205610: Aktywa_A_III_3
+      249-1-1-8351605276: Aktywa_A_III_3
+      260-2: Aktywa_B_II_1_B
+  oksan:
+    '2025':
+      201-2-1-UNIBEP: Aktywa_A_III_3
+      201-2-1-GRANIT: Aktywa_B_II_3_A_1
+      201-2-1-0003: Aktywa_B_II_1_A_1
+      202-2-1-0003: Aktywa_B_II_1_A_1
+      249-1-2-01: Aktywa_B_II_1_B
+      260-2-01: Aktywa_B_II_1_B
+      249-2-2-03: Aktywa_B_II_3_C
+  oksanbud:
+    '2025':
+      201-2-1-0405: Pasywa_B_III_1_A_1
+      202-2-1-0405: Pasywa_B_III_1_A_1

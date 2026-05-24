@@ -1,0 +1,13 @@
+README.md
+pyproject.toml
+src/autobilans/__init__.py
+src/autobilans/cli.py
+src/autobilans/config.py
+src/autobilans/dataset_index.py
+src/autobilans/pipeline.py
+src/autobilans.egg-info/PKG-INFO
+src/autobilans.egg-info/SOURCES.txt
+src/autobilans.egg-info/dependency_links.txt
+src/autobilans.egg-info/requires.txt
+src/autobilans.egg-info/top_level.txt
+tests/test_smoke.py

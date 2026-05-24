@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: autobilans
+Version: 0.1.0
+Summary: Lokalny pipeline do generowania bilansu na podstawie ZOiS
+Requires-Python: >=3.10
+Requires-Dist: openpyxl>=3.1.5
+Requires-Dist: pydantic>=2.8.2
+Requires-Dist: PyYAML>=6.0.2
+Requires-Dist: xlsxwriter>=3.2.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.2; extra == "dev"

@@ -1,0 +1,51 @@
+xml_aliases:
+  global:
+    Aktywa_A_II_1_A: BAAII1a
+    Aktywa_A_II_1_B: BAAII1b
+    Aktywa_A_II_1_C: BAAII1c
+    Aktywa_A_II_1_D: BAAII1d
+    Aktywa_A_II_1_E: BAAII1e
+    Aktywa_A_II_2: BAAII2
+    Pasywa_A_I: BPAI
+    Pasywa_A_II: BPAII_INN
+    Pasywa_A_VI: BPAVI
+
+  scoped:
+    8spzoo:
+      all:
+        Aktywa_B_III_1_C_1:
+          - BABIII1c1_SPKR__POS
+          - BABIII1c2_ISP
+        Aktywa_B_IV: BABIV
+        Pasywa_B_III_3_D_1: BPBIII1a_D12
+        Pasywa_B_III_3_G: BPBIII3g
+        Pasywa_B_III_3_I: BABII1b
+
+    metro:
+      all:
+        Aktywa_B_III_1_C_1:
+          - BABIII1c1_SPKR__POS
+          - BABIII1c2_ISP
+        Aktywa_B_IV: BABIV
+        Pasywa_B_II_3_A: BPBII3a
+        Pasywa_B_III_3_A: BABIII1c1_SPKR__NEG
+        Pasywa_B_III_3_H: BABII3c__NEG
+
+    oksan:
+      all:
+        Aktywa_B_III_1_C_1: BABIII1c1_SPKR
+        Aktywa_B_II_3_B: BABII3b__POS
+        Pasywa_B_III_3_D_1: BABII3a_D12__NEG
+        Pasywa_B_III_3_G: BABII3b__NEG
+        Pasywa_B_IV_2_1: BPBIV2_D
+
+    oksanbud:
+      all:
+        Aktywa_B_III_1_C_1: BABIII1c1_SPKR
+        Aktywa_B_IV:
+          - BABIV
+          - RPHI_RKKI_POZ
+        Aktywa_B_II_3_B: BABII3b__POS
+        Aktywa_B_II_3_C: BABII3c__POS
+        Pasywa_B_III_1_B: BABII1b__NEG
+        Pasywa_B_III_3_G: BABII3b__NEG
