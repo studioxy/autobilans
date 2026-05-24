@@ -36,16 +36,17 @@ class LearnedCompanyRules:
     prefix_rules: dict[str, LearnedPrefixRule]
 
 
-def _is_leaf_account(account_no: str, all_accounts: set[str]) -> bool:
-    prefix = f"{account_no}-"
-    return not any(other != account_no and other.startswith(prefix) for other in all_accounts)
-
-
 def _leaf_prefix_totals(rows: list[ZoisRow], *, max_depth: int | None = None) -> dict[str, float]:
     accounts = {row.account_no for row in rows}
+    non_leaf_accounts = set()
+    for account_no in accounts:
+        parts = account_no.split("-")
+        for i in range(1, len(parts)):
+            non_leaf_accounts.add("-".join(parts[:i]))
+
     totals: dict[str, float] = defaultdict(float)
     for row in rows:
-        if not _is_leaf_account(row.account_no, accounts):
+        if row.account_no in non_leaf_accounts:
             continue
         prefixes = account_prefixes(row.account_no)
         if max_depth is not None:
@@ -223,10 +224,16 @@ def _map_row_from_prefix_rules(row: ZoisRow, rules: LearnedCompanyRules) -> Mapp
 
 def _leaf_rows(rows: list[ZoisRow]) -> list[ZoisRow]:
     accounts = {row.account_no for row in rows}
+    non_leaf_accounts = set()
+    for account_no in accounts:
+        parts = account_no.split("-")
+        for i in range(1, len(parts)):
+            non_leaf_accounts.add("-".join(parts[:i]))
+
     return [
         row
         for row in rows
-        if _is_leaf_account(row.account_no, accounts)
+        if row.account_no not in non_leaf_accounts
     ]
 
 
