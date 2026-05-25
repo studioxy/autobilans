@@ -24,14 +24,6 @@ def _normalize_amount(code: str, amount: float) -> float:
     return amount
 
 
-def _is_leaf_account(account_no: str, all_accounts: set[str]) -> bool:
-    prefix = f"{account_no}-"
-    for other in all_accounts:
-        if other != account_no and other.startswith(prefix):
-            return False
-    return True
-
-
 def _decision_codes(row: ZoisRow, decision: MappingDecision) -> tuple[str, ...]:
     codes: list[str] = []
     if decision.balance_code:
@@ -45,7 +37,13 @@ def calculate_balance_with_contributions(
     decisions: list[MappingDecision],
 ) -> tuple[dict[str, float], dict[str, list[dict[str, Any]]]]:
     row_by_account = {row.account_no: row for row in rows}
-    all_accounts = set(row_by_account)
+
+    non_leaf_accounts = set()
+    for account_no in row_by_account:
+        parts = account_no.split("-")
+        for i in range(1, len(parts)):
+            non_leaf_accounts.add("-".join(parts[:i]))
+
     totals: dict[str, float] = defaultdict(float)
     contributions: dict[str, list[dict[str, Any]]] = defaultdict(list)
 
@@ -54,7 +52,7 @@ def calculate_balance_with_contributions(
         decision_codes = _decision_codes(row, decision)
         if not decision_codes:
             continue
-        if not _is_leaf_account(row.account_no, all_accounts):
+        if row.account_no in non_leaf_accounts:
             continue
         raw_amount = _row_amount(row)
         for code in decision_codes:
