@@ -205,7 +205,11 @@ def cmd_menu(config_path: str) -> int:
         print("9) Dodaj nową spółkę lub rok")
         print("0) Zakończ")
 
-        choice = input("Wybierz opcję: ").strip()
+        try:
+            choice = input("Wybierz opcję: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\nPrzerwano. Kończę pracę w menu.")
+            return 0
         try:
             if choice == "1":
                 cmd_run(config_path, company, year)
