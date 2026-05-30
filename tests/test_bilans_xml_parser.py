@@ -2,7 +2,7 @@ from autobilans.parsers.bilans_xml import parse_bilans_xml
 
 
 def test_parse_bilans_xml_reads_leaf_positions() -> None:
-    positions = parse_bilans_xml(r"D:\autobilans\8spzoo\2025\2026_01_24_SF_8_2025.xml")
+    positions = parse_bilans_xml(r"8spzoo/2025/2026_01_24_SF_8_2025.xml")
 
     assert positions
 
@@ -17,7 +17,7 @@ def test_parse_bilans_xml_reads_leaf_positions() -> None:
 
 
 def test_parse_bilans_xml_reads_pasywa_positions() -> None:
-    positions = parse_bilans_xml(r"D:\autobilans\metro\2025\2026-01-30-SF-metro-2025 jw.xml")
+    positions = parse_bilans_xml(r"metro/2025/2026-01-30-SF-metro-2025 jw.xml")
 
     liability = next(item for item in positions if item.code == "Pasywa_B_III_3_A")
     assert liability.section == "pasywa"

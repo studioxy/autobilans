@@ -74,7 +74,7 @@ def test_build_exception_queue_collects_mismatches_and_unresolved_accounts() -> 
 
 def test_apply_force_target_code_decision_updates_manual_rules_by_year(tmp_path: Path) -> None:
     target = tmp_path / "manual_rules.yaml"
-    target.write_text("manual_rules: {}\n", encoding="utf-8")
+    target.write_text("manual_rules: {}/n", encoding="utf-8")
 
     apply_force_target_code_decision(
         path=target,
@@ -105,7 +105,7 @@ def test_append_decision_log_writes_audit_entry(tmp_path: Path) -> None:
 
 def test_apply_exclude_secondary_code_decision_updates_policy_file(tmp_path: Path) -> None:
     target = tmp_path / "decision_policies.yaml"
-    target.write_text("decision_policies: {}\n", encoding="utf-8")
+    target.write_text("decision_policies: {}/n", encoding="utf-8")
 
     apply_exclude_secondary_code_decision(
         path=target,

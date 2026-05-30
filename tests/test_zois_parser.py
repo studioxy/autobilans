@@ -3,7 +3,7 @@ from autobilans.parsers.zois import parse_zois
 
 def test_parse_zois_reads_real_rows() -> None:
     rows = parse_zois(
-        r"D:\autobilans\8spzoo\2025\zois2025.xlsx",
+        r"8spzoo/2025/zois2025.xlsx",
         company="8spzoo",
         year=2025,
     )
@@ -20,14 +20,14 @@ def test_parse_zois_reads_real_rows() -> None:
 
 
 def test_parse_zois_keeps_unlabeled_rows_as_none() -> None:
-    rows = parse_zois(r"D:\autobilans\metro\2025\zois2025.xlsx")
+    rows = parse_zois(r"metro/2025/zois2025.xlsx")
 
     row = next(item for item in rows if item.account_no == "011")
     assert row.balance_code is None
 
 
 def test_parse_zois_reads_additional_balance_codes() -> None:
-    rows = parse_zois(r"D:\autobilans\metro\2025\zois2025.xlsx")
+    rows = parse_zois(r"metro/2025/zois2025.xlsx")
 
     row = next(item for item in rows if item.account_no == "220-01-01")
     assert row.balance_code == "BABII3b"
@@ -35,7 +35,7 @@ def test_parse_zois_reads_additional_balance_codes() -> None:
 
 
 def test_parse_zois_supports_short_format_without_mapping_columns() -> None:
-    rows = parse_zois(r"D:\autobilans\nordoen\2026\zois 2026.xlsx")
+    rows = parse_zois(r"nordoen/2026/zois 2026.xlsx")
 
     row = next(item for item in rows if item.account_no == "011")
     assert row.name == "Środki trwałe"

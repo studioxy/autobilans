@@ -1,17 +1,26 @@
-from __future__ import annotations
-
+import functools
 from collections import Counter, defaultdict
 
 from autobilans.models import ZoisRow
 
-
-def account_prefixes(account_no: str) -> list[str]:
+@functools.lru_cache(maxsize=1024)
+def account_prefixes(account_no: str) -> tuple[str, ...]:
+    """
+    Returns all prefixes for a given account number.
+    e.g. "123-45-6" -> ("123", "123-45", "123-45-6")
+    ⚡ Bolt: Cached to prevent repeated string splitting and joining for the same accounts
+    across thousands of ZOiS rows.
+    """
     parts = str(account_no).split("-")
-    prefixes: list[str] = []
-    for index in range(1, len(parts) + 1):
-        prefixes.append("-".join(parts[:index]))
-    return prefixes
-
+    prefixes = []
+    current = ""
+    for part in parts:
+        if current:
+            current += "-" + part
+        else:
+            current = part
+        prefixes.append(current)
+    return tuple(prefixes)
 
 def build_history_rules(rows: list[ZoisRow]) -> dict[str, dict[str, str]]:
     by_account: dict[str, Counter[str]] = defaultdict(Counter)

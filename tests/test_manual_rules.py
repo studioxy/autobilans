@@ -4,7 +4,7 @@ from autobilans.models import ZoisRow
 
 
 def test_load_manual_rules_reads_company_scope() -> None:
-    rules = load_manual_rules(r"D:\autobilans\config\manual_rules.yaml", company="metro")
+    rules = load_manual_rules(r"config/manual_rules.yaml", company="metro")
     assert isinstance(rules, dict)
 
 

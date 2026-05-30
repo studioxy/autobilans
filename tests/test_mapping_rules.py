@@ -5,7 +5,7 @@ from autobilans.parsers.zois import parse_zois
 
 
 def test_build_history_rules_learns_account_and_prefix_rules() -> None:
-    rows = parse_zois(r"D:\autobilans\metro\2025\zois2025.xlsx")
+    rows = parse_zois(r"metro/2025/zois2025.xlsx")
     rules = build_history_rules(rows)
 
     assert rules["account"]["011-3-01/2021"] == "BAAII1d_W"
@@ -15,7 +15,7 @@ def test_build_history_rules_learns_account_and_prefix_rules() -> None:
 
 
 def test_map_row_prefers_direct_label_over_history() -> None:
-    rows = parse_zois(r"D:\autobilans\8spzoo\2025\zois2025.xlsx")
+    rows = parse_zois(r"8spzoo/2025/zois2025.xlsx")
     rules = build_history_rules(rows)
     row = next(item for item in rows if item.account_no == "011-0-01")
 
@@ -27,7 +27,7 @@ def test_map_row_prefers_direct_label_over_history() -> None:
 
 
 def test_map_row_uses_prefix_history_for_unlabeled_similar_account() -> None:
-    rows = parse_zois(r"D:\autobilans\metro\2025\zois2025.xlsx")
+    rows = parse_zois(r"metro/2025/zois2025.xlsx")
     rules = build_history_rules(rows)
     unlabeled = ZoisRow(
         account_no="011-3-99/TEST",
@@ -47,7 +47,7 @@ def test_map_row_uses_prefix_history_for_unlabeled_similar_account() -> None:
 
 
 def test_map_row_can_use_global_history_when_company_history_is_missing() -> None:
-    global_rows = parse_zois(r"D:\autobilans\metro\2025\zois2025.xlsx")
+    global_rows = parse_zois(r"metro/2025/zois2025.xlsx")
     company_rules = build_history_rules([])
     global_rules = build_history_rules(global_rows)
     unlabeled = ZoisRow(

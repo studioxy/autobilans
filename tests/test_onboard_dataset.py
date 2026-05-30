@@ -9,12 +9,12 @@ def test_cmd_onboard_dataset_creates_folder_and_copies_files(tmp_path: Path) -> 
     config_path = tmp_path / "local.yaml"
     config_path.write_text(
         (
-            "paths:\n"
-            f"  data_root: {data_root}\n"
-            f"  output_root: {output_root}\n"
-            "pipeline:\n"
-            "  default_company: demo\n"
-            "  default_year: 2025\n"
+            "paths:/n"
+            f"  data_root: {data_root}/n"
+            f"  output_root: {output_root}/n"
+            "pipeline:/n"
+            "  default_company: demo/n"
+            "  default_year: 2025/n"
         ),
         encoding="utf-8",
     )
